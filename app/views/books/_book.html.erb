@@ -1,0 +1,29 @@
+<div id="<%= dom_id book %>">
+  <p>
+    <strong>Nazwa:</strong>
+    <%= book.name %>
+  </p>
+
+  <p>
+    <strong>Opis:</strong>
+    <%= book.description %>
+  </p>
+
+  <p>
+    <strong>Kategoria:</strong>
+    <% book.categories.each do |g| %>
+      <%= g.name %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Autor:</strong>
+    <%= book.author.name %>
+  </p>
+
+  <p>
+    <strong>Wydawnictwo:</strong>
+    <%= book.publisher.name %>
+  </p>
+
+</div>

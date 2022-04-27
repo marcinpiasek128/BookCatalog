@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Katalog książek</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+  </head>
+
+  <body>
+    <%= link_to "Lista Książek",books_path %> |
+    <%= link_to "Lista Kategorii",categories_path %> |
+    <%= link_to "Lista Autorów",authors_path %> |
+    <%= link_to "Lista Wydawnictw",publishers_path %>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @book %>
+
+<div>
+  <table>
+    <tr>
+      <td><%= link_to "Edytuj tę ksiązkę", edit_book_path(@book) %> |</td>
+      <td><%= link_to "Powrót do listy książek", books_path %> |</td>
+      <td><%= button_to "Usuń tę książkę", @book, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista Wydawnictw</h1>
+
+<div id="publishers">
+  <table id="tabela-wyswietlanie">
+    <thead>
+    <tr>
+      <th>Nazwa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @publishers.each do |publisher| %>
+      <tr>
+        <td><%= link_to publisher.name, publisher %></td>
+        <td><%= link_to "Edytuj", edit_publisher_path(publisher) %></td>
+        <td><%= button_to "Usuń", publisher, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<%= render partial:'form', locals: {publisher: Publisher.new} %>

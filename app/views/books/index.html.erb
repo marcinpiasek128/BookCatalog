@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista książek</h1>
+<div id="books">
+  <table id="tabela-wyswietlanie">
+    <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Kategoria</th>
+          <th>Autor</th>
+          <th>Wydawca</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @books.each do |book| %>
+        <tr>
+          <td><%= link_to book.name, book %></td>
+          <td>
+            <% book.categories.each do |g| %>
+              <%= link_to g.name, category_path(g.id) %><br>
+            <% end %>
+          </td>
+          <td><%= link_to book.author.name, author_path(book.author.id) %></td>
+          <td><%= link_to book.publisher.name, publisher_path(book.publisher.id) %></td>
+          <td><%= link_to "Edytuj", edit_book_path(book) %></td>
+          <td><%= button_to "Usuń", book, method: :delete, data: { confirm: 'Czy jesteś pewien?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<%= render partial:'form', locals: {book: Book.new} %>

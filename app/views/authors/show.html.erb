@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <strong>Nazwa autora:</strong>
+  <%= @author.name %>
+</p>
+
+<table id="tabela-wyswietlanie">
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>Kategoria</th>
+    <th>Wydawca</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @author.books.each do |b|%>
+    <tr>
+      <td><%= link_to b.name, b %></td>
+      <td>
+        <% b.categories.each do |g| %>
+          <%= link_to g.name, category_path(g.id) %><br>
+        <% end %>
+      </td>
+      <td><%= link_to b.publisher.name, publisher_path(b.publisher.id) %></td>
+      <td><%= link_to "Edytuj", edit_book_path(b) %></td>
+      <td><%= button_to "Usuń", b, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<div>
+  <table>
+    <tr>
+      <td><%= link_to "Edytuj tego autora", edit_author_path(@author) %> |</td>
+      <td><%= link_to "Powrót do listy autorów", authors_path %> |</td>
+      <td><%= button_to "Usuń tego autora", @author, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+    </tr>
+  </table>
+</div>

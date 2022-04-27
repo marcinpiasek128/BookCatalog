@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista Autorów</h1>
+
+<div id="authors">
+  <table id="tabela-wyswietlanie">
+    <thead>
+    <tr>
+      <th>Nazwa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td><%= link_to author.name, author %></td>
+        <td><%= link_to "Edytuj", edit_author_path(author) %></td>
+        <td><%= button_to "Usuń", author, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<%= render partial:'form', locals: {author: Author.new} %>

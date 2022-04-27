@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+
+<p>
+  <strong>Nazwa kategorii:</strong>
+  <%= @category.name %>
+</p>
+
+<table id="tabela-wyswietlanie">
+<thead>
+<tr>
+  <th>Nazwa</th>
+  <th>Autor</th>
+  <th>Wydawca</th>
+</tr>
+</thead>
+<tbody>
+<% @category.books.each do |b|%>
+  <tr>
+    <td><%= link_to b.name, b %></td>
+    <td><%= link_to b.author.name, author_path(b.author.id) %></td>
+    <td><%= link_to b.publisher.name, publisher_path(b.publisher.id) %></td>
+    <td><%= link_to "Edytuj", edit_book_path(b) %></td>
+    <td><%= button_to "Usuń", b, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<div>
+  <table>
+    <tr>
+      <td><%= link_to "Edytuj tę kategorię", edit_category_path(@category) %> |</td>
+      <td><%= link_to "Powrót do listy kategorii", categories_path %> |</td>
+      <td><%= button_to "Usuń tę kategorię", @category, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+    </tr>
+  </table>
+</div>

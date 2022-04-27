@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista Kategorii</h1>
+
+<div id="categories">
+
+  <table id="tabela-wyswietlanie">
+    <thead>
+    <tr>
+      <th>Nazwa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category %></td>
+        <td><%= link_to "Edytuj", edit_category_path(category) %></td>
+        <td><%= button_to "Usuń", category, method: :delete, data:{confirm: 'Czy jesteś pewien?'} %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<%= render partial:'form', locals: {category: Category.new} %>
+
